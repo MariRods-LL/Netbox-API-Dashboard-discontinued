@@ -4,7 +4,7 @@ A Node.js/Express middleware and web dashboard for synchronizing access-control 
 
 > **Project status: incomplete and discontinued.** This repository is an unfinished snapshot. It is not production-ready, and it will not receive further updates, maintenance, bug fixes, or security patches. Use it for reference or local experimentation only. Deployment is at your own risk.
 
-## Features found in this snapshot
+## Features 
 
 - External NetBox/access-control service connectivity and session handling.
 - Access and event-history imports, partition-aware synchronization, and reprocessing scripts.
@@ -16,7 +16,7 @@ A Node.js/Express middleware and web dashboard for synchronizing access-control 
 - JWT login, user registration, and password-change flow.
 - Browser dashboard and configuration/help pages.
 
-These features are present in the source, but some are unfinished, inconsistent, or unverified. Do not assume they work reliably.
+
 
 ## Technology stack
 
@@ -190,7 +190,7 @@ Unless otherwise noted, endpoints require a valid Bearer token. The authenticati
 | GET    | `/api/report/eventType`              | Event counts by event type                           |
 | GET    | `/api/report/pdf`                    | PDF report export                                    |
 
-Filter names and formats vary by endpoint. Inspect the relevant controller before relying on a filter.
+
 
 ## Database
 
