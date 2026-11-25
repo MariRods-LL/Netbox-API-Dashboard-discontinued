@@ -1,0 +1,31 @@
+.about-container{
+
+  background-color: #e7e7e7;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+  margin: 0 auto 18px;
+  max-width: 1100px;
+  padding: 18px;
+ justify-content: center;
+ align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+#usage-steps li {
+  color: #000000;
+  background-color: #fcfcfc;
+  margin: 8px 0;
+  border-radius: 6px;
+    padding: 12px;
+    border: #464646 1px solid;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+}
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     margin-bottom: 20px;
+    margin-bottom: 20px;
+  
+}

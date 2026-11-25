@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NetBox Report Dashboard - Sobre </title>
+  <link rel="stylesheet" href="../styles/style.css">
+  <link rel="stylesheet" href="../styles/about.css">
+</head>
+
+<body>
+  <header>
+    <ul class="menu">
+      <li><img id="logo" src="/img/netbox.png"></li>
+      <li><a href="../dashboard.html">Dashboard</a></li>
+      <li><a href="about.html">Sobre</a></li>
+      <li><a href="config.html">Configurações</a>
+      <ul class="submenu" id="submenu-config">
+            <li><a href="config_advanced.html">Configurações Avançadas</a></li>
+            <li><a href="config_useraccess.html">Painel de Acesso de Usuário</a></li>
+          </ul>
+        </li>
+      <li><a href="../status.html">Status</a></li>
+      <li>
+        <a href="#">Ajuda</a>
+        <ul class="submenu">
+          <li><a href="contact.html">Contato</a></li>
+          <li><a href="tutorial.html">Tutorial</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </li>
+      <li style="float: right;">
+        <a href="#" onclick="logout()" style="color: #ff6b6b;">Logout</a>
+      </li>
+    </ul>
+  </header>
+
+  <div class="titlecontainer">
+    <h1 class="title">Sobre o NetBox Report Dashboard</h1>
+  </div>
+
+  <main>
+    <section class="about-container">
+      <div class="image-container">
+        <img src="../img/netbox.png" src="image.jpg" width="80" height="80" alt="NetBox">
+        <h1 class="subtitle">  NetBox Report Dashboard</h1>
+      </div>
+      <p>O Netbox Report Dashboard é uma aplicação web desenvolvida para facilitar a visualização, análise e
+        gerenciamento das informações coletadas pelo Middleware Netbox.</p>
+
+
+      <p> A aplicação realiza a sincronização dos registros do sistema de controle de acesso com um banco de dados
+        PostgreSQL, permitindo a geração de gráficos, estatísticas e relatórios interativos sobre acessos e eventos
+        registrados pelos dispositivos monitorados.</p>
+
+      <p>O objetivo do projeto é transformar grandes volumes de dados técnicos em informações organizadas e de fácil
+        interpretação, auxiliando equipes de operação, segurança e administração na tomada de decisões.</p>
+      <p>Principais funcionalidades:</p>
+      <ul>
+        <li>Sincronização automática dos dados do  Netbox.</li>
+        <li>Processamento de históricos de acessos e eventos.</li>
+        <li>Importação de múltiplas partições do sistema.</li>
+        <li>Armazenamento estruturado em PostgreSQL.</li>
+        <li>Dashboard com gráficos interativos.</li>
+        <li>Filtros por: Partição, Leitor, Período, Tipo de registro (Acessos/Eventos).</li>
+        <li>Estatísticas em tempo real.</li>
+        <li>Reprocessamento completo do banco de dados.</li>
+       
+      </ul>
+    </section>
+    <div class="titlecontainer">
+      <h1 class="title">Como Usar</h1>
+    </div>
+    <section class="about-container">
+      <p>Para usar o NetBox Tools, siga os passos abaixo:</p>
+      <ol id="usage-steps">
+        <li>Acesse a página de configurações clicando em "Configurações" no menu.</li>
+
+        <li>Preencha os campos de configuração com as informações do seu servidor NetBox, incluindo endereço, porta,
+          usuário, senha, partição e nome do banco de dados exibido no menu.</li>
+
+        <li>Clique no botão "Testar conexão" para verificar se as configurações estão corretas e se a conexão com o
+          servidor NetBox é bem-sucedida.</li>
+
+        <li>Após testar a conexão, você pode acessar a página inicial para visualizar os dados extraídos e transformados
+          do NetBox.</li>
+      </ol>
+    </section>
+  </main>
+  <footer>
+    @2026 - Marianna P. Rodrigues
+  </footer>
+
+</body>
+
+</html>

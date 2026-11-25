@@ -1,0 +1,83 @@
+<html>
+    <!doctype html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
+
+  <title>NetBox Report Dashboard - Contato</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <link rel="stylesheet" href="../styles/style.css" />
+  <link rel="stylesheet" href="../styles/menu.css" />
+</head>
+<body>
+     <header>
+      <ul class="menu">
+        <li><img id="logo" src="../img/netbox.png"></li>
+        <li><a href="../dashboard.html">Dashboard</a></li>
+        <li><a href="../pages/about.html">Sobre</a></li>
+        <li><a href="../pages/config.html">Configurações</a>
+        <ul class="submenu" id="submenu-config">
+            <li><a href="../pages/config_advanced.html">Configurações Avançadas</a></li>
+            <li><a href="../pages/config_useraccess.html">Painel de Acesso de Usuário</a></li>
+          </ul>
+        </li>
+        <li><a href="../status.html">Status</a></li>
+        <li>
+          <a href="#">Ajuda</a>
+          <ul class="submenu">
+            <li><a href="../pages/contact.html">Contato</a></li>
+            <li><a href="../pages/tutorial.html">Tutorial</a></li>
+            <li><a href="../pages/faq.html">FAQ</a></li>
+          </ul>
+        </li>
+        <li style="float: right;">
+          <a href="#" onclick="logout()" style="color: #ff6b6b;">Logout</a>
+        </li>
+      </ul>
+    </header>
+    <main>
+    <div class="titlecontainer">
+        <h1 class="title">FAQ</h1>
+        <h2 class="subtitle">Perguntas Frequentes</h2>
+        <p>Q: O que é o NetBox Report Dashboard?</p>
+        <p>R: É uma plataforma web responsável por importar, organizar e apresentar os dados do  Netbox através de gráficos, indicadores e relatórios.</p>
+        <br>
+        <p>Q: O sistema altera informações no Netbox?</p>
+        <p>R: Dashboard realiza apenas leitura das informações disponibilizadas pela API do NetBox e as armazena em um banco de dados para consulta e geração de relatórios.</p>
+        <br>
+        <p>Q: Como faço para conectar ao NetBox?</p>
+        <p>R: Para conectar ao NetBox, você precisa fornecer o endereço do servidor, porta, usuário e senha corretos. Certifique-se de que as informações estejam corretas e que você tenha acesso à rede onde o NetBox está hospedado.</p>
+        <br>
+        <p>Q: O que devo fazer se encontrar um erro ao tentar acessar o NetBox?</p>
+        <p>R: Se você encontrar um erro ao tentar acessar o NetBox, verifique se as informações de conexão estão corretas. Além disso, certifique-se de que o servidor do NetBox esteja em execução e acessível. Se o problema persistir, entre em contato com o suporte técnico.</p>
+        <br>
+        <p> Q: Como eu configuro o Banco de Dados?</p>
+        <p>R: Para configurar o Banco de Dados, você precisa acessar a página de configurações e preencher os campos correspondentes com as informações do seu banco de dados. Certifique-se de fornecer o nome correto do banco de dados exibido no status.</p>   
+        <br>
+        <p>Q: Onde posso encontrar as informações depois da sincronização?</p>
+        <p>R: Depois da sincronização é possível verificar através do banco de dados conectado, onde será utilizado para geração de graficos visual em Dashboard. É possível verificar os dados disponíveis gerando a tabela após clicar em "Exibir Logs" na aba Status, caso o problema persista, entrar em contato com o suporte técnico.</p>
+        <br>
+        <p>Os dados são atualizados automaticamente?</p>
+        <p>R: Sim, os dados são atualizados automaticamente se a sincronização automática com o NetBox está ligada.</p>
+        <br> 
+        <p> Q: O que é a sincronização automática?</p>
+        <p>R: A sincronização automática é um recurso que permite que o sistema atualize os dados do NetBox automaticamente em intervalos regulares, sem a necessidade de intervenção manual. Isso garante que as informações exibidas no Dashboard estejam sempre atualizadas.</p>
+        <br>
+        <p>Q: Posso exportar os relatórios gerados pelo Dashboard?</p>
+        <p>R: Sim, o Dashboard oferece opções para exportar os relatórios em PDF, permitindo que você compartilhe ou armazene os relatórios conforme necessário.</p>
+        <br>
+        <p>Q:Os gráficos são atualizados automaticamente?</p>
+        <p>R: Sim, os gráficos são atualizados automaticamente conforme os dados são sincronizados com o NetBox.</p>
+        <br>
+        <p>Q:Quais bancos de dados são utilizados?</p>
+        <p>R: O NetBox Report Dashboard utiliza o PostgreSQL como banco de dados para armazenar as informações sincronizadas com o NetBox.</p>
+        <br>
+        <p>Q: Os gráficos não geram após a sincronização.</p>
+        <p>R: O problema mais comum, é a falta de dados necessários para que o sistema possa gerar os gráficos. Verifique se após a sincronização, as informações estão disponíveis e completos no banco de dados conectado.</p>
+
+    </div>
+    <footer>@2026 - Marianna P. Rodrigues</footer>
+</body>
+</html>

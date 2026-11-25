@@ -1,0 +1,4 @@
+.env
+node_modules
+src/config/app-config.json
+src/config/users.json

@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NetBox Report Dashboard - Configuracoes</title>
+    <link rel="stylesheet" href="../styles/style.css" />
+    <link rel="stylesheet" href="../styles/config.css" />
+  </head>
+
+  <body>
+    <header>
+      <ul class="menu">
+        <li><img id="logo" src="../img/netbox.png"></li>
+        <li><a href="../dashboard.html">Dashboard</a></li>
+        <li><a href="about.html">Sobre</a></li>
+        <li><a href="config.html">Configurações</a>
+          <ul class="submenu" id="submenu-config">
+            <li><a href="config_advanced.html">Configurações Avançadas</a></li>
+            <li><a href="config_useraccess.html">Painel de Acesso de Usuário</a></li>
+          </ul>
+          </li>
+        <li><a href="../status.html">Status</a></li>
+        <li>
+          <a href="#">Ajuda</a>
+          <ul class="submenu" >
+            <li><a href="contact.html">Contato</a></li>
+            <li><a href="tutorial.html">Tutorial</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </li>
+        <li style="float: right;">
+          <a href="#" onclick="logout()" style="color: #ff6b6b;">Logout</a>
+        </li>
+      </ul>
+    </header>
+
+    <div class="titlecontainer">
+      <h1 class="title">Configurações</h1>
+    </div>
+
+    <main>
+      <section class="container">
+        <div class="config-container">
+          <h2 class="subtitle">Configurações do NetBox</h2>
+
+          <label for="netboxHostInput">Endereço do servidor</label>
+          <input type="text" id="netboxHostInput" placeholder="Endereco IP do servidor"/>
+
+          <label for="netboxPortInput">Porta</label>
+          <input type="number" id="netboxPortInput" placeholder="80" />
+
+          <label for="netboxUserInput">Usuário</label>
+          <input type="text" id="netboxUserInput" placeholder="Usuario do NetBox" />
+
+          <label for="netboxPasswordInput">Senha</label>
+          <input type="password" id="netboxPasswordInput" placeholder="Preencha apenas para alterar" />
+          
+         
+
+          <label for="netboxDbNameInput">Banco NetBox </label>
+          <input type="text" id="netboxDbNameInput" placeholder="s2config" />
+
+          <button class="btntest" onclick="saveAndTestConfig()">
+            Testar conexão
+          </button>
+           <label for="netboxPartitionInput">Partição</label>
+          <input type="number" id="netboxPartitionInput" placeholder="3" />
+          <label>
+            <input type="checkbox" id="allPartitionsInput">
+            Importar dados em todas as partições
+          </label>
+        </div>
+        
+        <div class="config-container">
+          <h2 class="subtitle">Configurações da Integração</h2>
+
+          <label for="importLogTypeInput">Tipo de log para Importar:</label>
+          <select id="importLogTypeInput">
+            <option value="access">Acessos de Entrada e Saida</option>
+            <option value="event">Eventos</option>
+          </select>
+
+          <label for="autoImportInput">Importar os eventos no banco de dados:</label>
+          <div class="checkbox-container">
+            <label><input type="checkbox" name="eventNameInput" value="Access denied"> Access denied</label>
+            <label><input type="checkbox" name="eventNameInput" value="Access granted"> Access granted</label>
+            <label><input type="checkbox" name="eventNameInput" value="Access not completed"> Access not completed</label>
+            <label><input type="checkbox" name="eventNameInput" value="Blade not responding"> Blade not responding</label>
+            <label><input type="checkbox" name="eventNameInput" value="Blade responding"> Blade responding</label>
+            <label><input type="checkbox" name="eventNameInput" value="Network node connected"> Network node connected</label>
+            <label><input type="checkbox" name="eventNameInput" value="Network node disconnect"> Network node disconnect</label>
+          </div>
+          <label for="logLimitInput">Quantidade de logs exibido no menu:</label>
+          <input type="number" id="logLimitInput" placeholder="50" />
+          <label>
+            <input type="checkbox" id="autoSync">
+            Importar automaticamente eventos no banco de dados.
+          </label>
+
+          <label for="autoUpdateTimeInput">
+            Intevalo da atualização automática (minutos):
+          </label>
+          <input type="number" id="syncInterval"value="10"min="1" placeholder="Tempo em minutos"/>
+        
+        </div>
+      </section>
+
+      <div id="status" class="info">Nenhum status disponivel.</div><br />
+      <button id="saveConfigBtn" class="btn_function" onclick="saveConfig()">
+        Salvar
+      </button>
+    </main>
+ <footer>
+      @2026 - Marianna P. Rodrigues
+    </footer>
+
+    <script src="../app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,83 @@
+
+<html>
+    <!doctype html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
+
+  <title>NetBox Report Dashboard - Contato</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <link rel="stylesheet" href="../styles/style.css" />
+  <link rel="stylesheet" href="../styles/config.css" />
+</head>
+<body>
+     <header>
+      <ul class="menu">
+        <li><img id="logo" src="../img/netbox.png"></li>
+        <li><a href="../dashboard.html">Dashboard</a></li>
+        <li><a href="../pages/about.html">Sobre</a></li>
+        <li><a href="../pages/config.html">Configurações</a>
+          <ul class="submenu" id="submenu-config">
+            <li><a href="../pages/config_advanced.html">Configurações Avançadas</a></li>
+            <li><a href="../pages/config_useraccess.html">Panel de Acesso de Usuário</a></li>
+          </ul>
+          </li>
+        <li><a href="../status.html">Status</a></li>
+        <li>
+          <a href="#">Ajuda</a>
+          <ul class="submenu">
+            <li><a href="../pages/contact.html">Contato</a></li>
+            <li><a href="../pages/tutorial.html">Tutorial</a></li>
+            <li><a href="../pages/faq.html">FAQ</a></li>
+          </ul>
+        </li>
+        <li style="float: right;">
+          <a href="#" onclick="logout()" style="color: #ff6b6b;">Logout</a>
+        </li>
+      </ul>
+    </header>
+    <main>
+      <section class="container">
+        <div id="size-container">
+        <div class="config-container" id="center-container">
+         
+          <h2 class="subtitle">Configurações do PostgreSQL</h2>
+
+          <label for="dbHostInput">Endereço do servidor</label>
+          <input type="text" id="dbHostInput" placeholder="localhost" />
+
+          <label for="dbNameInput">Banco de dados</label>
+          <input type="text" id="dbNameInput" placeholder="netbox_history" />
+
+          <label for="dbUserInput">Usuário</label>
+          <input type="text" id="dbUserInput" placeholder="postgres" />
+
+          <label for="dbPortInput">Porta</label>
+          <input type="number" id="dbPortInput" placeholder="5432" />
+
+          <label for="dbPasswordInput">Senha</label>
+          <input type="password" id="dbPasswordInput"placeholder="Preencha apenas para alterar" />
+
+          <label for="dbImportTableInput">Tabela de importação de acessos</label>
+          <input type="text" id="dbImportTableInput" placeholder="access_history" />
+
+          <label for="dbEventTableInput">Tabela de importação de eventos</label>
+          <input type="text" id="dbEventTableInput" placeholder="event_history" />
+
+          <button class="btntest" onclick="saveAndTestConfig()"> Testar conexão </button>
+        </div>
+        </div>
+      </section>
+    </main>
+     <div id="status" class="info">Nenhum status disponivel.</div><br />
+      <button id="saveConfigBtn" class="btn_function" onclick="saveConfig()">
+        Salvar
+      </button>
+    </main>
+    <footer>@2026 - Marianna P. Rodrigues</footer>
+</body>
+    <script src="../app.js"></script>
+</html>
+

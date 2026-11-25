@@ -1,0 +1,407 @@
+<!doctype html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
+
+  <title>NetBox Report Dashboard - Relatórios</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <link rel="stylesheet" href="./styles/style.css" />
+  <link rel="stylesheet" href="./styles/menu.css" />
+  <link rel="stylesheet" href="./styles/report.css" />
+</head>
+
+<body>
+  <button id="sidebarToggle" class="sidebar-toggle">☰</button>
+  <div id="sidebar" class="sidebar">
+    <h3>Visualizações</h3>
+
+    <label class="sidebar-all">
+      <input type="checkbox" id="checkAllGraphs" checked>
+      <span>Todos</span>
+    </label>
+    <hr>
+
+    <div class="sidebar-category">
+      <div class="sidebar-title">
+        <span><span class="toggle-icon">▶</span>
+          📊 Totais</span>
+        <span class="menu-count" data-category="total">0</span>
+      </div>
+      <div class="sidebar-submenu">
+        <label class="submenu-item" data-logtype="access">
+          <input type="checkbox" class="graph-checkbox" data-target="DeniedAccessCard" checked>
+          Acessos Totais
+        </label>
+        <label class="submenu-item" data-logtype="event">
+          <input type="checkbox" class="graph-checkbox" data-target="eventTypeCard" checked>
+          Eventos Totais
+        </label>
+      </div>
+    </div>
+
+    <div class="sidebar-category">
+      <div class="sidebar-title">
+        <span><span class="toggle-icon">▶</span>
+          📈 Por Hora</span>
+        <span class="menu-count" data-category="hour">0</span>
+      </div>
+      <div class="sidebar-submenu">
+        <label class="submenu-item" data-logtype="access">
+          <input type="checkbox" class="graph-checkbox" data-target="hourAccessCard" checked>
+          Acessos por Hora
+        </label>
+        <label class="submenu-item" data-logtype="event">
+          <input type="checkbox" class="graph-checkbox" data-target="hourEventCard" checked>
+          Eventos por Hora
+        </label>
+      </div>
+    </div>
+
+    <div class="sidebar-category">
+      <div class="sidebar-title">
+        <span><span class="toggle-icon">▶</span>
+          📅 Por Dia</span>
+        <span class="menu-count" data-category="day">0</span>
+      </div>
+      <div class="sidebar-submenu">
+        <label class="submenu-item" data-logtype="access">
+          <input type="checkbox" class="graph-checkbox" data-target="dailyAccessCard" checked>
+          Acessos por Dia
+        </label>
+        <label class="submenu-item" data-logtype="event">
+          <input type="checkbox" class="graph-checkbox" data-target="dailyEventCard" checked>
+          Eventos por Dia
+        </label>
+      </div>
+    </div>
+
+    <div class="sidebar-category">
+      <div class="sidebar-title">
+        <span><span class="toggle-icon">▶</span>
+          🏢 Por Partição</span>
+        <span class="menu-count" data-category="partition">0</span>
+      </div>
+      <div class="sidebar-submenu">
+        <label class="submenu-item" data-logtype="access">
+          <input type="checkbox" class="graph-checkbox" data-target="partitionAccessCard" checked>
+          Acessos por Partição
+        </label>
+        <label class="submenu-item" data-logtype="event">
+          <input type="checkbox" class="graph-checkbox" data-target="partitionEventCard" checked>
+          Eventos por Partição
+        </label>
+      </div>
+    </div>
+
+    <div class="sidebar-category">
+      <div class="sidebar-title">
+        <span><span class="toggle-icon">▶</span>
+          🚪 Por Leitores</span>
+        <span class="menu-count" data-category="reader">0</span>
+      </div>
+      <div class="sidebar-submenu">
+        <label class="submenu-item" data-logtype="access">
+          <input type="checkbox" class="graph-checkbox" data-target="ReaderChartCard" checked>
+          Acessos por Leitores
+        </label>
+      </div>
+    </div>
+
+    <div class="sidebar-category">
+      <div class="sidebar-title">
+        <span><span class="toggle-icon">▶</span>
+          👤 Por Usuários</span>
+        <span class="menu-count" data-category="user">0</span>
+      </div>
+      <div class="sidebar-submenu">
+        <label class="submenu-item" data-logtype="access">
+          <input type="checkbox" class="graph-checkbox" data-target="UserChartCard" checked>
+          Acessos por Usuários
+        </label>
+      </div>
+    </div>
+  </div>
+  <header>
+    <ul class="menu">
+      <li><img id="logo" src="../img/.jpeg"></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="pages/about.html">Sobre</a></li>
+      <li><a href="pages/config.html">Configurações</a>
+        <ul class="submenu" id="submenu-config">
+          <li><a href="pages/config_advanced.html">Configurações Avançadas</a></li>
+          <li><a href="pages/config_useraccess.html">Panel de Acesso de Usuário</a></li>
+        </ul>
+      </li>
+      <li><a href="status.html">Status</a></li>
+      <li><a href="#">Ajuda</a>
+        <ul class="submenu">
+          <li><a href="pages/contact.html">Contato</a></li>
+          <li><a href="pages/tutorial.html">Tutorial</a></li>
+          <li><a href="pages/faq.html">FAQ</a></li>
+        </ul>
+      </li>
+      <li style="float: right;"><a href="#" onclick="logout()" style="color: #ff6b6b;">Logout</a>
+      </li>
+    </ul>
+  </header>
+
+  <h1>Relatórios</h1>
+
+  <div class="filters">
+    <div>
+      <label for="LogTypeInputReport">Tipo de Log:</label>
+      <select id="LogTypeInputReport">
+        <option value="all">Todos</option>
+        <option value="access">Acessos de Entrada e Saida</option>
+        <option value="event">Eventos</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="startDate">Início:</label>
+      <input type="date" id="startDate" />
+    </div>
+
+    <div>
+      <label for="endDate">Fim:</label>
+      <input type="date" id="endDate" />
+    </div>
+
+    <div id="eventTypeFilter" style="display: none">
+      <label for="EventSelectReport">Eventos:</label>
+      <select id="EventSelectReport" multiple>
+        <option value="Access denied">Access denied</option>
+        <option value="Access granted">Access granted</option>
+        <option value="Access not completed">Access not completed</option>
+        <option value="Blade not responding">Blade not responding</option>
+        <option value="Blade responding">Blade responding</option>
+        <option value="Network node connected">Network node connected</option>
+        <option value="Network node disconnect">
+          Network node disconnect
+        </option>
+      </select>
+    </div>
+
+    <div class="select-container">
+      <label for="PartitionSelectReport">Partições:</label>
+      <select id="PartitionSelectReport" multiple></select>
+    </div>
+
+    <div class="select-container">
+      <label for="PortalSelectReport">Leitoras:</label>
+      <select id="PortalSelectReport" multiple></select>
+    </div>
+
+    <button onclick="loadDashboard()">Filtrar</button>
+  </div>
+
+  <button id="PrintReportBtn">Imprimir / Salvar PDF</button>
+
+  <div class="reports-container">
+    <div class="accessReports" id="accessReports">
+
+      <div class="charts">
+
+        <div id="partitionAccessCard" class="chart-card" data-group="partition" data-logtype="access">
+
+          <h2>Acessos por Partição</h2>
+          <div class="chart-body">
+            <div class="chart-scroll">
+            <canvas id="partitionChart"></canvas>
+          </div>
+          </div>
+          <div id="partitionChartLoading" class="chart-loading">
+            <div>
+              <div class="spinner"></div>
+              <p>Carregando dados...</p>
+            </div>
+          </div>
+
+          <div id="partitionChartEmpty" class="chart-empty">
+            <div>
+              <h3>📊 Sem dados</h3>
+              <p> Não existem dados suficientes para os filtros selecionados. </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-card" id="DeniedAccessCard" data-group="total" data-logtype="access">
+
+          <h2>Acessos Totais</h2>
+          <div class="chart-body">
+            <canvas id="DeniedChart"></canvas>
+          </div>
+          <div id="DeniedChartLoading" class="chart-loading">
+            <div>
+              <div class="spinner"></div>
+              <p>Carregando dados...</p>
+            </div>
+          </div>
+
+          <div id="DeniedChartEmpty" class="chart-empty">
+            <div>
+              <h3>📊 Sem dados</h3>
+              <p> Não existem dados suficientes para os filtros selecionados. </p>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="chart-card" id="dailyAccessCard" data-group="day" data-logtype="access">
+
+          <h2> Acessos por Dia</h2>
+          <div class="chart-body">
+             <div class="chart-scroll">
+            <canvas id="DailyPartitionChart"></canvas>
+          </div></div>
+          <div id="DailyPartitionChartLoading" class="chart-loading">
+            <div>
+              <div class="spinner"></div>
+              <p>Carregando dados...</p>
+            </div>
+          </div>
+
+          <div id="DailyPartitionChartEmpty" class="chart-empty">
+            <div>
+              <h3>📊 Sem dados</h3>
+              <p> Não existem dados suficientes para os filtros selecionados. </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-card" id="hourAccessCard" data-group="hour" data-logtype="access">
+
+          <h2 id="HourChartTitle">Acessos por Hora</h2>
+          <div class="chart-body">
+            <canvas id="HourDetailChart"></canvas>
+          </div>
+          <div id="HourDetailChartLoading" class="chart-loading">
+            <div>
+              <div class="spinner"></div>
+              <p>Carregando dados...</p>
+            </div>
+          </div>
+
+          <div id="HourDetailChartEmpty" class="chart-empty">
+            <div>
+              <h3>📊 Sem dados</h3>
+              <p> Não existem dados suficientes para os filtros selecionados. </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="eventReports" id="eventReports" style="display: none;">
+
+      <div class="charts">
+
+        <div class="chart-card" id="eventTypeCard" data-group="total" data-logtype="event">
+
+          <h2>Tipos de Eventos totais</h2>
+          <div class="chart-body">
+             <div class="chart-scroll">
+            <canvas id="totalEventChart"></canvas>
+          </div></div>
+          <div id="totalEventChartLoading" class="chart-loading">
+            <div>
+              <div class="spinner"></div>
+              <p>Carregando dados...</p>
+            </div>
+          </div>
+
+          <div id="totalEventChartEmpty" class="chart-empty">
+            <div>
+              <h3>📊 Sem dados</h3>
+              <p> Não existem dados suficientes para os filtros selecionados. </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-card" id="partitionEventCard" data-group="partition" data-logtype="event">
+          <h2> Eventos por Partição</h2>
+          <div class="chart-body">
+             <div class="chart-scroll">
+            <canvas id="eventPartitionChart"></canvas>
+          </div>
+          </div>
+          <div id="eventPartitionChartLoading" class="chart-loading">
+            <div>
+              <div class="spinner"></div>
+              <p>Carregando dados...</p>
+            </div>
+          </div>
+
+          <div id="eventPartitionChartEmpty" class="chart-empty">
+            <div>
+              <h3>📊 Sem dados</h3>
+              <p> Não existem dados suficientes para os filtros selecionados. </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-card" id="dailyEventCard" data-group="day" data-logtype="event">
+          <h2>Eventos por Dia</h2>
+          <div class="chart-body">
+             <div class="chart-scroll">
+            <canvas id="DailyPartitionEventChart"></canvas>
+          </div>
+          </div>
+          <div id="DailyPartitionEventChartLoading" class="chart-loading">
+            <div>
+              <div class="spinner"></div>
+              <p>Carregando dados...</p>
+            </div>
+          </div>
+
+          <div id="DailyPartitionEventChartEmpty" class="chart-empty">
+            <div>
+              <h3>📊 Sem dados</h3>
+              <p> Não existem dados suficientes para os filtros selecionados. </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-card" id="hourEventCard" data-group="hour" data-logtype="event">
+
+          <h2 id="HourChartEventTitle"> Eventos por Hora</h2>
+          <div class="chart-body">
+            <canvas id="HourDetailEventChart"> </canvas>
+          </div>
+          <div id="HourDetailEventChartLoading" class="chart-loading">
+            <div>
+              <div class="spinner"></div>
+              <p>Carregando dados...</p>
+            </div>
+          </div>
+
+          <div id="HourDetailEventChartEmpty" class="chart-empty">
+            <div>
+              <h3>📊 Sem dados</h3>
+              <p> Não existem dados suficientes para os filtros selecionados. </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <footer>@2026 - Marianna P. Rodrigues</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+
+  <script src="./scripts/report_charts.js"></script>
+  <script src="scripts/report_preferences.js"></script>
+  <script src="./scripts/report_dashboard.js"></script>
+  <script src="./scripts/report_charts_access.js"></script>
+  <script src="./scripts/report_charts_event.js"></script>
+  <script src="./scripts/report_sidebar.js"></script>
+  <script src="./scripts/report_utils.js"></script>
+  <script src="./scripts/report.js"></script>
+</body>
+
+</html>

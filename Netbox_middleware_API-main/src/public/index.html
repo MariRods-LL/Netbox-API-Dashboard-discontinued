@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NetBox Report Dashboard  -Home</title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/menu.css" />
+    
+  </head>
+
+  <body>
+    <header>
+      <ul class="menu">
+        <li><img id="logo" src="./img/netbox.png"></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="pages/about.html">Sobre</a></li>
+          <a href="pages/config.html">Configurações</a>
+        </li>
+          <li><a href="dashboard.html">Relatórios</a></li>
+        <li><a href="#">Ajuda</a>
+        <ul class="submenu">
+            <li><a href="#">Contato</a></li>
+            <li><a href="#">Tutorial</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul></li>
+      </ul>
+    </header>
+
+    <div class="titlecontainer">
+      <h1 class="title">NetBox Report Dashboard</h1>
+    </div>
+
+    <main>
+      <section class="container">
+        <aside class="sidecontainer">
+          <h2 class="subtitlie">Menu</h2>
+
+          <div class="containerTable">
+            <table class="InfoTable">
+              <tr>
+                <td>Server Atual:</td>
+                <td id="ip-address">172.18.0.71</td>
+   </tr>
+              <tr class="gray">
+                <td>Particao:</td>
+                <td id="partition">3</td>
+              </tr>
+              <tr>
+                <td>Porta:</td>
+                <td id="port">5432</td>
+              </tr>
+              <tr class="gray">
+                <td>Usuario:</td>
+                <td id="user">USER</td>
+              </tr>
+              <tr>
+                <td>Banco NetBox:</td>
+                <td id="db-name-netbox">s2config</td>
+              </tr>
+            </table>
+
+            <table class="InfoTable">
+              <tr>
+                <td>Servidor BD:</td>
+                <td id="ip-address-db">localhost</td>
+              </tr>
+              <tr class="gray">
+                <td>Nome BD:</td>
+                <td id="db-name">netbox-history</td>
+              </tr>
+              <tr>
+                <td>Usuario BD:</td>
+                <td id="user-db">postgres</td>
+              </tr>
+              <tr class="gray">
+                <td>Importar para:</td>
+                <td id="import-to">access_history</td>
+              </tr>
+              <tr>
+                <td>Tipo de log:</td>
+                <td id="log-type">Log de acessos</td>
+              </tr>
+            </table>
+          </div>
+
+          <h2 class="subtitlie">Status</h2>
+          <p id="status-info">Livre</p>
+
+        
+            
+        <div class="functions">
+          <button id="syncBtn" class="btn_function" onclick="syncEvents()">
+            Sincronizar
+          </button>
+
+          <button id="reloadBtn" class="btn_function" onclick="reloadEvents()">
+            Reprocessar Tudo
+          </button>
+
+          <button id="showLogsBtn" class="btn_function" onclick="showLogs()">
+            Exibir logs
+          </button>
+          
+
+          <button
+            id="testConnectionBtn"
+            class="btn_function"
+            onclick="testConnection()"
+          >
+            Testar conexão
+          </button>
+          <button
+              id="exportCsvBtn"
+              class="btn_function"
+              onclick="exportCsv()"
+            >
+              Exportar CSV
+            </button>
+        </div>
+      </section>
+      <div id="status" class="info">Nenhum comando em execucao.</div>
+      <br />
+
+      <section class="container table-section">
+        <table class="AccessTable">
+          <thead>
+            <tr class="Column">
+              <th>logid</th>
+              <th>personid</th>
+              <th>reader</th>
+              <th>dttm</th>
+              <th>nodedttm</th>
+              <th>type</th>
+              <th>reason</th>
+              <th>readerkey</th>
+              <th>portalkey</th>
+            </tr>
+          </thead>
+          <tbody id="event-table-body">
+            
+            </tr>
+            <tr class="gray">
+              
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <section class="container table-section" style="display: none;">
+        <table class="EventTable">
+          <thead>
+            <tr class="Column">
+              <th>logid</th>
+              <th>event_time</th>
+              <th>event_name</th>
+              <th>source_type</th>
+              <th>reason</th>
+              <th>alarm_cause</th>
+              <th>partition_key</th>
+              <th>partition_name</th>
+              <th>type</th>
+              <th>event_type</th>
+              <th>imported_at</th>
+            </tr>
+          </thead>
+          <tbody id = "access-table-body">
+          </tr>
+          <tr class="gray">
+
+          </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+    <footer>
+      @2026 - Marianna P. Rodrigues
+    </footer>
+
+    <script src="app.js"></script>
+    <script src="scripts/menu.js"></script>
+  </body>
+</html>
